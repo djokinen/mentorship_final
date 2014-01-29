@@ -48,7 +48,10 @@ public class WebService : System.Web.Services.WebService
 				cree_MenteeMentor menteeMentor = new DataAccess().SetMenteeMentor((Guid)userMentee.ProviderUserKey, (Guid)userMentor.ProviderUserKey, connectionStatusId);
 				if (menteeMentor != null)
 				{
-					bool sent = Global.SendConnectEmailToMentee(userMentee);
+					if (connectionStatusId == ConnectionStatus.Accepted.GetHashCode())
+					{
+						bool sent = Global.SendConnectEmailToMentee(userMentee);
+					}
 					return menteeMentor.ConnectionStatus.GetHashCode();
 				}
 			}

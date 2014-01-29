@@ -47,7 +47,7 @@ public static class Global
 			mailMessage.Body = body.ToString();
 			try
 			{
-				// new SmtpClient().Send(mailMessage);
+				new SmtpClient().Send(mailMessage);
 				value = true;
 			}
 			catch (SmtpFailedRecipientException) { value = false; }
@@ -89,7 +89,7 @@ public static class Global
 			mailMessage.Body = body.ToString();
 			try
 			{
-				// new SmtpClient().Send(mailMessage);
+				new SmtpClient().Send(mailMessage);
 				value = true;
 			}
 			catch (SmtpFailedRecipientException) { value = false; }
@@ -121,7 +121,7 @@ public static class Global
 			mailMessage.Body = body.ToString();
 			try
 			{
-				// new SmtpClient().Send(mailMessage);
+				new SmtpClient().Send(mailMessage);
 				value = true;
 			}
 			catch (SmtpFailedRecipientException) { value = false; }
