@@ -7,20 +7,17 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UserControl_MenteeMentor_Connect : BaseUserControl
+public partial class membership_admin_dashboard : BasePage
 {
 	protected override void OnLoad(EventArgs e)
 	{
 		base.OnLoad(e);
-		// if (!IsPostBack) { this.DataBind(); }
 	}
 
 	public override void DataBind()
 	{
 		base.DataBind();
 		StringBuilder text = new StringBuilder();
-		// List<cree_MenteeMentor> menteeMentorList = new DataAccess().GetMenteeMentor().Where(n=> n.ConnectionStatus != 0).ToList();
-
 		List<cree_MenteeMentor> menteeMentorList = (from t in new DataAccess().GetMenteeMentor()
 																  where t.ConnectionStatus != 0
 																  select t).ToList();
@@ -48,9 +45,8 @@ public partial class UserControl_MenteeMentor_Connect : BaseUserControl
 
 				// mentee details
 				MembershipUser membershipUser = Membership.GetUser(menteeMentorList[i].UserIdMentee);
-				ProfileCommon profileCommon = (ProfileCommon)ProfileCommon.Create(membershipUser.UserName);
 				text.AppendFormat("<div>");
-				text.AppendFormat("<label>{0}</label>", profileCommon.FullName);
+				text.AppendFormat("<label>{0}</label>", membershipUser.UserName);
 				text.AppendFormat("<p>{0}</p>", membershipUser.Email);
 				text.AppendFormat("</div>");
 				text.AppendFormat("</li>");

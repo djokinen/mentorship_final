@@ -235,23 +235,23 @@ a.btn {
 }
 
 .btn.accept:hover {
-	background-color: #0F9D58;
+	/*background-color: #0F9D58;*/
 }
 
 .btn.reject:hover {
-	background-color: #D34836;
+	/*background-color: #D34836;*/
 }
 
 /*#mentee-mentor-list .btn.reject {*/
 .btn.reject {
-	color: #fff;
-	background-color: #D34836;
+	/*color: #fff;*/
+	/*background-color: #D34836;*/
 }
 
 /*#mentee-mentor-list .btn.accept {*/
 .btn.accept {
-	color: #fff;
-	background-color: #0F9D58;
+	/*color: #fff;*/
+	/*background-color: #0F9D58;*/
 }
 /* end mentee mentor connect form */
 

@@ -17,6 +17,11 @@ public static class Global
 	/// <returns></returns>
 	public static bool SendConnectEmailToMentor(MembershipUser membershipUserMentor, string message)
 	{
+		/*
+		 * from: noreply
+		 * to: mentor
+		 */
+
 		bool value = false;
 		if (membershipUserMentor != null)
 		{
@@ -26,9 +31,11 @@ public static class Global
 			MailMessage mailMessage = new MailMessage();
 			// from
 			// mailMessage.From = new MailAddress(Resources.Key.NoReplyEmail);
-			mailMessage.From = new MailAddress(membershipUserMentee.Email);
+			mailMessage.From = new MailAddress(Resources.Key.EmailAccountNoReply);
+
 			// bcc
-			mailMessage.Bcc.Add(Resources.Key.EmailAccountInfo);
+			// mailMessage.Bcc.Add(Resources.Key.EmailAccountInfo);
+
 			// to
 			mailMessage.To.Add(membershipUserMentor.Email);
 
@@ -43,7 +50,7 @@ public static class Global
 
 			body.AppendFormat("<p>To accept this connection, click the following link to update your account connections:</p>", baseUrl);
 			body.AppendFormat("<ul><li>{0}{1}</li></ul>", baseUrl, Resources.Key.ProfileUrl);
-			body.AppendFormat("<p>If you have any questions, please contact us at {0}.</p>", baseUrl, Resources.Key.EmailAccountInfo);
+			body.AppendFormat(_getEmailFooter(baseUrl));
 			mailMessage.Body = body.ToString();
 			try
 			{
@@ -55,11 +62,15 @@ public static class Global
 		return value;
 	}
 
-	/// <summary>Email to the mentee from the mentor declining or accepting the mentoring request</summary>
+	/// <summary>Email to the mentee from the mentor accepting the mentoring request</summary>
 	/// <param name="membershipUserMentee"></param>
 	/// <returns></returns>
 	public static bool SendConnectEmailToMentee(MembershipUser membershipUserMentee)
 	{
+		/*
+		 * from: mentor
+		 * to: mentee
+		 */
 		bool value = false;
 		if (membershipUserMentee != null)
 		{
@@ -69,13 +80,13 @@ public static class Global
 			string baseUrl = Global.GetBaseUrl();
 			// mail message
 			MailMessage mailMessage = new MailMessage();
-			
+
 			// from
 			mailMessage.From = new MailAddress(membershipUserMentor.Email, profileCommonMentor.FullName);
-			
+
 			// bcc
-			mailMessage.Bcc.Add(Resources.Key.EmailAccountInfo);
-			
+			// mailMessage.Bcc.Add(Resources.Key.EmailAccountAdmin);
+
 			// to
 			mailMessage.To.Add(membershipUserMentee.Email);
 
@@ -85,7 +96,7 @@ public static class Global
 			StringBuilder body = new StringBuilder();
 
 			body.AppendFormat("<p>Your connection has been accepted by {0}</p>", profileCommonMentor.FullName);
-			body.AppendFormat("<p>If you have any questions, please contact us at {0}.</p>", baseUrl, Resources.Key.EmailAccountInfo);
+			body.AppendFormat(_getEmailFooter(baseUrl));
 			mailMessage.Body = body.ToString();
 			try
 			{
@@ -99,6 +110,12 @@ public static class Global
 
 	public static bool SendRegistrationEmail(MembershipUser membershipUser, RoleType roleType)
 	{
+		/*
+		 * from: noreply
+		 * to: registrant
+		 * bcc: admin
+		 */
+
 		bool value = false;
 		if (membershipUser != null)
 		{
@@ -106,9 +123,13 @@ public static class Global
 			// mail message
 			MailMessage mailMessage = new MailMessage();
 			// from
-			mailMessage.From = new MailAddress(Resources.Key.EmailAccountInfo);
+			mailMessage.From = new MailAddress(Resources.Key.EmailAccountNoReply);
+
 			// to
 			mailMessage.To.Add(membershipUser.Email);
+
+			// bcc
+			mailMessage.Bcc.Add(Resources.Key.EmailAccountAdmin);
 
 			// subject
 			mailMessage.Subject = "Cree Youth Mentorship: Registration Confirmation";
@@ -117,7 +138,7 @@ public static class Global
 			StringBuilder body = new StringBuilder();
 			body.AppendFormat("<p>Thank you for registering as a {0}!</p>", roleType.ToString());
 			body.Append("<p>Your registration profile is now being reviewed and you will receive a confirmation email within 48hrs.</p>");
-			body.AppendFormat("<p>If you have any questions, please contact us at {0}.</p>", baseUrl, Resources.Key.EmailAccountInfo);
+			body.AppendFormat(_getEmailFooter(baseUrl));
 			mailMessage.Body = body.ToString();
 			try
 			{
@@ -136,5 +157,10 @@ public static class Global
 			HttpContext.Current.Request.Url.Scheme,
 			HttpContext.Current.Request.Url.Authority,
 			HttpContext.Current.Request.ApplicationPath).TrimEnd('/');
+	}
+
+	private static string _getEmailFooter(string baseUrl)
+	{
+		return string.Format("<p>If you have any questions, please contact us at {0}.</p>", Resources.Key.EmailAccountNoReply);
 	}
 }
