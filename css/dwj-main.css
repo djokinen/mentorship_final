@@ -1,0 +1,262 @@
+﻿body {
+	font-family: arial,sans-serif;
+	font-size: 83%;
+}
+
+h2, h3 {
+	text-transform: capitalize;
+}
+
+section#header {
+	text-align: right;
+	text-transform: lowercase;
+}
+
+.error {
+	color: #f00;
+}
+
+span.status {
+	color: #f80;
+	display: inline !important;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+/* form styles */
+
+.form fieldset {
+	/* background-color: #eee; */
+}
+
+	.form fieldset legend {
+		font-weight: bolder;
+		background-color: white;
+		border-radius: .50em;
+		padding: 2px 8px;
+	}
+
+	.form fieldset ol {
+		padding: 0;
+		margin: 0;
+	}
+
+		.form fieldset ol li {
+			list-style: none;
+		}
+
+		.form fieldset ol li {
+			list-style: none;
+			margin: 4px;
+			padding: 4px;
+			clear: left;
+			display: block;
+			float: left;
+			/* min-height: 53px; */
+			position: relative;
+			width: 75%;
+		}
+
+			.form fieldset ol li label {
+				font-weight: bolder;
+			}
+
+				.form fieldset ol li label.value {
+					font-weight: lighter;
+				}
+
+.member_list input:not([type="radio"]):not([type="submit"]):not([type="checkbox"]),
+.member_list textarea,
+.member_list span {
+	background-color: #f80 !important;
+	display: inline !important;
+	padding: inherit !important;
+	width: inherit !important;
+}
+
+.form fieldset ol li input:not([type=radio]):not([type=submit]):not([type=button]):not([type="checkbox"]),
+.form fieldset ol li textarea,
+.form fieldset ol li span {
+	-moz-box-sizing: border-box;
+	border: 1px solid #DFDFDF;
+	display: block;
+	font: 13px/18px Arial,Helvetica,sans-serif;
+	padding: 7px 18px 9px;
+	width: 100%;
+}
+
+.form fieldset ol li input:not([type=radio]):not([type=submit]):not([type=button]):not([type="checkbox"]),
+.form fieldset ol li span {
+	height: 34px;
+}
+
+.form fieldset ol li textarea {
+	height: 68px;
+}
+
+.form fieldset ol li span {
+	border: none;
+}
+
+/* mentor industry list boxes */
+.list_controls {
+	margin: 90px 260px 0;
+	text-align: center;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.mentor-list.left {
+	width: 35%;
+}
+
+.mentor-list.right {
+	width: 60%;
+}
+
+.mentor-list ul {
+	border: 1px solid #999999;
+	overflow: auto;
+	height: 16em;
+}
+
+.member_list ul {
+	background-color: #FFFFFF;
+	border: 1px solid #999999;
+	/*height: 200px;*/
+	height: 16em;
+	list-style: none outside none;
+	margin: 2px 0 0;
+	overflow: auto;
+	padding: 0;
+	/*width: 240px;*/
+	width: 16em;
+}
+
+		.mentor-list li.active,
+		a.btn.active {
+			background-color: #3C3C3C;
+			color: #fff;
+			border-color: /*#3C3C3C;*/ #FE5B13;
+		}
+
+	.mentor-list ul li,
+	.member_list ul li {
+		border-bottom: 1px solid #CCCCCC;
+		margin: 0;
+		/*padding: 0 0 0 4px;*/
+		padding: 4px 0px;
+	}
+
+		.member_list ul li input[type="checkbox"] {
+			/* float: right; */
+			/*margin: 7px 10px 0 0;*/
+			margin: 6px;
+		}
+
+		.mentor-list ul li label,
+		.member_list ul li label {
+			font-weight: normal !important;
+			/* display: block; */
+			/*padding: 5px 10px;*/
+			/*width: 160px;*/
+		}
+
+#mixitup-container .mix {
+	opacity: 0;
+	display: none;
+}
+
+h3 {
+	color: #FE5B13;
+	font-size: large;
+}
+
+
+/* 
+	None = 0, 
+	Pending = 1, 
+	Accepted = 2 
+*/
+
+/* None = 0 */
+.csid0 {
+	/*color: #f80;*/
+}
+
+/* Pending = 1 */
+.csid1 {
+	color: #fff;
+	background-color: #f80;
+}
+
+/* Accepted = 2 */
+.csid2 {
+	color: #fff;
+	background-color: #0F9D58;
+}
+
+.status {
+	color: #f00;
+}
+
+
+/* mentee mentor connect form */
+#mentee-mentor-list label {
+	font-weight: bolder;
+}
+
+.btn.reject, .btn.accept {
+	min-width: 68px;
+	text-align: center;
+	opacity: .75;
+}
+
+#mentee-mentor-list li {
+	width: 100%;
+}
+
+
+a.btn {
+	margin-top:0px;
+}
+
+.btn.accept:hover,
+.btn.reject:hover {
+	opacity: 1;
+}
+
+.btn.accept:hover {
+	background-color: #0F9D58;
+}
+
+.btn.reject:hover {
+	background-color: #D34836;
+}
+
+/*#mentee-mentor-list .btn.reject {*/
+.btn.reject {
+	color: #fff;
+	background-color: #D34836;
+}
+
+/*#mentee-mentor-list .btn.accept {*/
+.btn.accept {
+	color: #fff;
+	background-color: #0F9D58;
+}
+/* end mentee mentor connect form */
+
+.btn.filter {
+	/* TODO: This is commented out in old version */
+	margin-top: 6px !important;
+	background-color: #eee;
+}

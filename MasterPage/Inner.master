@@ -1,0 +1,21 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage/Base.master" AutoEventWireup="true" CodeFile="Inner.master.cs" Inherits="MasterPage_Inner" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentHead" runat="Server">
+
+	<link rel="stylesheet" href="/css/form.css" />
+	<script src="/js/forms.js"></script>
+
+	<asp:ContentPlaceHolder ID="ContentHead" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentBody" runat="Server">
+
+	<div class="content priv">
+		<div class="container_16">
+			<div class="grid_16">
+				<asp:ContentPlaceHolder ID="ContentBody" runat="server"></asp:ContentPlaceHolder>
+			</div>
+		</div>
+	</div>
+
+</asp:Content>
