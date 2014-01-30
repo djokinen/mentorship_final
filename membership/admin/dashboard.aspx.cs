@@ -12,42 +12,44 @@ public partial class membership_admin_dashboard : BasePage
 	protected override void OnLoad(EventArgs e)
 	{
 		base.OnLoad(e);
+		if (!IsPostBack) { this.DataBind(); }
 	}
 
 	public override void DataBind()
 	{
 		base.DataBind();
 		StringBuilder text = new StringBuilder();
-		List<cree_MenteeMentor> menteeMentorList = (from t in new DataAccess().GetMenteeMentor()
-																  where t.ConnectionStatus != 0
-																  select t).ToList();
+		MembershipUserCollection membershipUserCollection = Membership.GetAllUsers();
+		// List<cree_MenteeMentor> menteeMentorList = (from t in new DataAccess().GetMenteeMentor() where t.ConnectionStatus != 0 select t).ToList();
 
-		if (menteeMentorList.Count == 0)
+		if (membershipUserCollection.Count == 0)
 		{
 			text.Append("<li><strong>You have no pending connections</strong></li>");
 		}
 		else
 		{
-			for (int i = 0; i < menteeMentorList.Count; i++)
+			// for (int i = 0; i < menteeMentorList.Count; i++)
+			foreach (MembershipUser membershipUser in membershipUserCollection)
 			{
-				text.AppendFormat("<li data-userid=\"{0}\">", menteeMentorList[i].UserIdMentee);
+				ProfileCommon profileCommon = (ProfileCommon)ProfileCommon.Create(membershipUser.UserName);
+				// text.AppendFormat("<li data-userid=\"{0}\">", membershipUser.UserIdMentee);
+				text.AppendFormat("<li data-userid=\"{0}\">", membershipUser.ProviderUserKey);
 				// command buttons
 				text.AppendFormat("<div class=\"right\">");
-				if (menteeMentorList[i].ConnectionStatus == ConnectionStatus.Accepted.GetHashCode())
+				if (membershipUser.IsApproved)
 				{
-					text.AppendFormat("<a class=\"btn reject\" href=\"javascript://\">{0}</a>", "disconnect");
+					text.AppendFormat("<a class=\"btn reject\" href=\"javascript://\">{0}</a>", "disable");
 				}
 				else
 				{
-					text.AppendFormat("<a class=\"btn accept\" href=\"javascript://\">{0}</a>", "connect");
+					text.AppendFormat("<a class=\"btn accept\" href=\"javascript://\">{0}</a>", "enable");
 				}
 				text.AppendFormat("</div>");
 
 				// mentee details
-				MembershipUser membershipUser = Membership.GetUser(menteeMentorList[i].UserIdMentee);
 				text.AppendFormat("<div>");
-				text.AppendFormat("<label>{0}</label>", membershipUser.UserName);
-				text.AppendFormat("<p>{0}</p>", membershipUser.Email);
+				text.AppendFormat("<label>{0}</label>", profileCommon.FullName);
+				text.AppendFormat("<div><a href=\"mailto://{0}\">{0}</a></div>", membershipUser.Email);
 				text.AppendFormat("</div>");
 				text.AppendFormat("</li>");
 			}

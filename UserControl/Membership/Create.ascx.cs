@@ -62,7 +62,7 @@ public partial class UserControl_Membership_Create : BaseUserControl
 	private bool _createMember(out string status)
 	{
 		MembershipCreateStatus membershipCreateStatus;
-		MembershipUser membershipUser = Membership.CreateUser(UserName.Text, Password.Text, UserName.Text, null, null, true, out membershipCreateStatus);
+		MembershipUser membershipUser = Membership.CreateUser(UserName.Text, Password.Text, UserName.Text, null, null, false, out membershipCreateStatus);
 		if (membershipUser != null)
 		{
 			RoleType roleType = this._isMentee ? RoleType.Mentee : RoleType.Mentor;

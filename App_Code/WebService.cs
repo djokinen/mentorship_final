@@ -58,4 +58,22 @@ public class WebService : System.Web.Services.WebService
 		}
 		return ConnectionStatus.None.GetHashCode();
 	}
+
+	[WebMethod]
+	public bool UpdateUser(Guid userId, bool isApproved)
+	{
+		// check if current user is an admin
+		bool isAdmin = Roles.IsUserInRole(Membership.GetUser().UserName, RoleType.Admin.ToString());
+		if (isAdmin)
+		{
+			MembershipUser membershipUser = Membership.GetUser(userId);
+			if (membershipUser != null)
+			{
+				membershipUser.IsApproved = isApproved;
+				Membership.UpdateUser(membershipUser);
+				return true;
+			}
+		}
+		return false;
+	}
 }
