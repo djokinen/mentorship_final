@@ -71,6 +71,11 @@ public class WebService : System.Web.Services.WebService
 			{
 				membershipUser.IsApproved = isApproved;
 				Membership.UpdateUser(membershipUser);
+
+				if (isApproved)
+				{
+					Global.SendRegistrationApprovedEmail(membershipUser);
+				}
 				return true;
 			}
 		}

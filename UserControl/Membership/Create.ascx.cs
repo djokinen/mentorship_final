@@ -67,9 +67,6 @@ public partial class UserControl_Membership_Create : BaseUserControl
 		{
 			RoleType roleType = this._isMentee ? RoleType.Mentee : RoleType.Mentor;
 			Roles.AddUserToRole(membershipUser.UserName, roleType.ToString());
-			// add user to role
-			//if (this._isMentee) { Roles.AddUserToRole(membershipUser.UserName, RoleType.Mentee.ToString()); }
-			//else { Roles.AddUserToRole(membershipUser.UserName, RoleType.Mentor.ToString()); }
 
 			// add user profile information
 			ProfileCommon profileCommon = (ProfileCommon)ProfileCommon.Create(membershipUser.UserName);

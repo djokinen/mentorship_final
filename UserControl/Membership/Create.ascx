@@ -134,12 +134,8 @@
 
 			<h2>Welcome!</h2>
 			<h3>Account Status</h3>
-			<p>Your account has been set-up. You can begin by logging in and editing your profile</p>
-			<ul>
-				<li>
-					<a class="btn accept" href="/membership/profile.aspx">View your profile</a>
-				</li>
-			</ul>
+			<p>Your account has been set-up. Please allow 24-48 hours for us to review your account information.</p>
+			<%--<ul><li><a class="btn accept" href="/membership/profile.aspx">View your profile</a></li></ul>--%>
 
 	</asp:Panel>
 

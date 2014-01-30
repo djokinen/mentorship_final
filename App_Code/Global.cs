@@ -26,7 +26,7 @@ public static class Global
 		if (membershipUserMentor != null)
 		{
 			MembershipUser membershipUserMentee = Membership.GetUser();
-			string baseUrl = Global.GetBaseUrl();
+			string baseUrl = Global._getBaseUrl();
 			// mail message
 			MailMessage mailMessage = new MailMessage();
 			// from
@@ -43,13 +43,14 @@ public static class Global
 			mailMessage.Subject = "Cree Youth Mentorship: Connection Request";
 
 			StringBuilder body = new StringBuilder();
+			string url = string.Format("{0}{1}", _getBaseUrl(), Resources.Key.ProfileUrl);
 
 			body.Append("<p>Someone wants you to be their mentor. See their personal message to you here:</p>");
 			if (string.IsNullOrWhiteSpace(message)) { body.Append("<blockquote>No custom message sent</blockquote>"); }
 			else { body.AppendFormat("<blockquote>{0}</blockquote>", message); }
 
 			body.AppendFormat("<p>To accept this connection, click the following link to update your account connections:</p>", baseUrl);
-			body.AppendFormat("<ul><li>{0}{1}</li></ul>", baseUrl, Resources.Key.ProfileUrl);
+			body.AppendFormat("<ul><li><a href=\"{0}\">{0}</a></li></ul>", url);
 			body.AppendFormat(_getEmailFooter(baseUrl));
 			mailMessage.Body = body.ToString();
 			try
@@ -77,7 +78,7 @@ public static class Global
 			MembershipUser membershipUserMentor = Membership.GetUser();
 			ProfileCommon profileCommonMentor = (ProfileCommon)ProfileCommon.Create(membershipUserMentor.UserName);
 
-			string baseUrl = Global.GetBaseUrl();
+			string baseUrl = Global._getBaseUrl();
 			// mail message
 			MailMessage mailMessage = new MailMessage();
 
@@ -119,7 +120,7 @@ public static class Global
 		bool value = false;
 		if (membershipUser != null)
 		{
-			string baseUrl = Global.GetBaseUrl();
+			string baseUrl = Global._getBaseUrl();
 			// mail message
 			MailMessage mailMessage = new MailMessage();
 			// from
@@ -150,8 +151,52 @@ public static class Global
 		return value;
 	}
 
+	public static bool SendRegistrationApprovedEmail(MembershipUser membershipUser)
+	{
+		/*
+		 * from: noreply
+		 * to: member
+		 * bcc: admin
+		 */
+
+		bool value = false;
+		if (membershipUser != null)
+		{
+			string baseUrl = Global._getBaseUrl();
+			// mail message
+			MailMessage mailMessage = new MailMessage();
+			// from
+			mailMessage.From = new MailAddress(Resources.Key.EmailAccountNoReply);
+
+			// to
+			mailMessage.To.Add(membershipUser.Email);
+
+			// bcc
+			mailMessage.Bcc.Add(Resources.Key.EmailAccountAdmin);
+
+			// subject
+			mailMessage.Subject = "Cree Youth Mentorship: Registration Approved";
+
+			mailMessage.IsBodyHtml = true;
+			string url = string.Format("{0}{1}", _getBaseUrl(), Resources.Key.ProfileUrl);
+			StringBuilder body = new StringBuilder();
+			body.Append("<p>Your account has been reviewed and approved!</p>");
+			body.Append("<p>To get started, log in to your profile using the following link:</p>");
+			body.AppendFormat("<ul><li><a href=\"{0}\">{0}</a></li></ul>", url);
+			body.AppendFormat(_getEmailFooter(baseUrl));
+			mailMessage.Body = body.ToString();
+			try
+			{
+				new SmtpClient().Send(mailMessage);
+				value = true;
+			}
+			catch (SmtpFailedRecipientException) { value = false; }
+		}
+		return value;
+	}
+
 	/// <returns>http://www.mydomainname.com</returns>
-	public static string GetBaseUrl()
+	private static string _getBaseUrl()
 	{
 		return string.Format("{0}://{1}{2}",
 			HttpContext.Current.Request.Url.Scheme,
@@ -161,6 +206,6 @@ public static class Global
 
 	private static string _getEmailFooter(string baseUrl)
 	{
-		return string.Format("<p>If you have any questions, please contact us at {0}.</p>", Resources.Key.EmailAccountNoReply);
+		return string.Format("<p>If you have any questions, please contact us at <a href=\"mailto://{0}\">{0}</a>.</p>", Resources.Key.EmailAccountAdmin);
 	}
 }

@@ -20,20 +20,18 @@ public partial class membership_admin_default : BasePage
 		base.DataBind();
 		StringBuilder text = new StringBuilder();
 		MembershipUserCollection membershipUserCollection = Membership.GetAllUsers();
-		// List<cree_MenteeMentor> menteeMentorList = (from t in new DataAccess().GetMenteeMentor() where t.ConnectionStatus != 0 select t).ToList();
 
 		if (membershipUserCollection.Count == 0)
 		{
-			text.Append("<li><strong>You have no pending connections</strong></li>");
+			text.Append("<li><strong>There are no users in the system.</strong></li>");
 		}
 		else
 		{
-			// for (int i = 0; i < menteeMentorList.Count; i++)
 			foreach (MembershipUser membershipUser in membershipUserCollection)
 			{
 				ProfileCommon profileCommon = (ProfileCommon)ProfileCommon.Create(membershipUser.UserName);
-				// text.AppendFormat("<li data-userid=\"{0}\">", membershipUser.UserIdMentee);
 				text.AppendFormat("<li data-userid=\"{0}\">", membershipUser.ProviderUserKey);
+
 				// command buttons
 				text.AppendFormat("<div class=\"right\">");
 				if (membershipUser.IsApproved)
@@ -51,7 +49,7 @@ public partial class membership_admin_default : BasePage
 				text.AppendFormat("<strong>Name</strong>: <label>{0}</label>", profileCommon.FullName);
 				text.AppendFormat("<div><strong>Email</strong>: <a href=\"mailto://{0}\">{0}</a></div>", membershipUser.Email);
 				text.AppendFormat("<div><strong>Role Type</strong>: {0}</div>", string.Join(", ", Roles.GetRolesForUser(membershipUser.UserName)));
-				
+
 				text.AppendFormat("</div>");
 				text.AppendFormat("</li>");
 			}
