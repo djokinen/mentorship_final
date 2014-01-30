@@ -69,7 +69,7 @@ public partial class UserControl_Membership_Create : BaseUserControl
 			Roles.AddUserToRole(membershipUser.UserName, roleType.ToString());
 
 			// add user profile information
-			ProfileCommon profileCommon = (ProfileCommon)ProfileCommon.Create(membershipUser.UserName);
+			ProfileCommon profileCommon = Global.GetProfile(membershipUser.UserName);
 			profileCommon.FullName = FullName.Text.Trim();
 			profileCommon.Save();
 

@@ -29,7 +29,7 @@ public partial class membership_admin_default : BasePage
 		{
 			foreach (MembershipUser membershipUser in membershipUserCollection)
 			{
-				ProfileCommon profileCommon = (ProfileCommon)ProfileCommon.Create(membershipUser.UserName);
+				ProfileCommon profileCommon = Global.GetProfile(membershipUser.UserName);
 				text.AppendFormat("<li data-userid=\"{0}\">", membershipUser.ProviderUserKey);
 
 				// command buttons

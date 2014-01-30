@@ -48,7 +48,7 @@ public partial class UserControl_MenteeMentor_Connect : BaseUserControl
 
 				// mentee details
 				MembershipUser membershipUser = Membership.GetUser(menteeMentorList[i].UserIdMentee);
-				ProfileCommon profileCommon = (ProfileCommon)ProfileCommon.Create(membershipUser.UserName);
+				ProfileCommon profileCommon = Global.GetProfile(membershipUser.UserName);
 				text.AppendFormat("<div>");
 				text.AppendFormat("<label>{0}</label>", profileCommon.FullName);
 				text.AppendFormat("<p>{0}</p>", membershipUser.Email);

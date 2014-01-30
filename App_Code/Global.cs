@@ -76,7 +76,7 @@ public static class Global
 		if (membershipUserMentee != null)
 		{
 			MembershipUser membershipUserMentor = Membership.GetUser();
-			ProfileCommon profileCommonMentor = (ProfileCommon)ProfileCommon.Create(membershipUserMentor.UserName);
+			ProfileCommon profileCommonMentor = GetProfile(membershipUserMentor.UserName);
 
 			string baseUrl = Global._getBaseUrl();
 			// mail message
@@ -203,6 +203,8 @@ public static class Global
 			HttpContext.Current.Request.Url.Authority,
 			HttpContext.Current.Request.ApplicationPath).TrimEnd('/');
 	}
+
+	public static ProfileCommon GetProfile(string username) { return (ProfileCommon)ProfileCommon.Create(username); }
 
 	private static string _getEmailFooter(string baseUrl)
 	{
