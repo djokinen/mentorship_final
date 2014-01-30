@@ -45,7 +45,8 @@ public static class Global
 			StringBuilder body = new StringBuilder();
 			string url = string.Format("{0}{1}", _getBaseUrl(), Resources.Key.ProfileUrl);
 
-			body.Append("<p>Someone wants you to be their mentor. See their personal message to you here:</p>");
+			ProfileCommon profileCommon = GetProfile(membershipUserMentee.UserName);
+			body.AppendFormat("<p>{0} wants you to be their mentor. See their personal message to you here:</p>", profileCommon.FullName);
 			if (string.IsNullOrWhiteSpace(message)) { body.Append("<blockquote>No custom message sent</blockquote>"); }
 			else { body.AppendFormat("<blockquote>{0}</blockquote>", message); }
 
