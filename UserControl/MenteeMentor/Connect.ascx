@@ -3,12 +3,6 @@
 <script>
 	var btn;
 	$(function () {
-
-		$("#button").click(function () {
-			_canConnect();
-			return false;
-		});
-
 		$("#mentee-mentor-list a").click(function () {
 			_connectWithMentee($(this));
 		});
