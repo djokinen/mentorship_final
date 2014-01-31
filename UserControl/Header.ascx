@@ -31,7 +31,6 @@
 			<div class="menu_block">
 				<nav class="horizontal-nav full-width horizontalNav-notprocessed">
 					<ul class="sf-menu">
-						<%--<li class="current "><a href="/default.aspx">About</a>--%>
 						<li><a href="/default.aspx">About</a>
 							<ul>
 								<li><a href="/mentoring.aspx">Mentoring</a></li>
@@ -39,18 +38,18 @@
 								<li><a href="/mentor.aspx">What Is A Mentor?</a></li>
 							</ul>
 						</li>
-
-						<li>
-							<asp:LoginView ID="loginViewAdmin" runat="server">
-								<RoleGroups>
-									<asp:RoleGroup Roles="admin">
-										<ContentTemplate>
+						
+						<asp:LoginView ID="loginViewAdmin" runat="server">
+							<RoleGroups>
+								<asp:RoleGroup Roles="admin">
+									<ContentTemplate>
+										<li>
 											<a href="/membership/admin/default.aspx" title="admin">Admin</a>
-										</ContentTemplate>
-									</asp:RoleGroup>
-								</RoleGroups>
-							</asp:LoginView>
-						</li>
+										</li>
+									</ContentTemplate>
+								</asp:RoleGroup>
+							</RoleGroups>
+						</asp:LoginView>
 
 						<li>
 							<asp:LoginView ID="loginView" runat="server">
