@@ -3,6 +3,12 @@
 <script>
 	var btn;
 	$(function () {
+
+		$("#button").click(function () {
+			_canConnect();
+			return false;
+		});
+
 		$("#mentee-mentor-list a").click(function () {
 			_connectWithMentee($(this));
 		});
@@ -12,8 +18,14 @@
 		btn = button;
 		var uid = btn.closest("li").data("userid");
 		if (btn.hasClass("accept")) {
-			if (confirm("Connect with this mentee?")) {
-				WebService.ConnectWithMentee(uid, 2, _connectWithMenteeCallback);
+			var canConnect = $("ul#mentee-mentor-list a.reject").length < 2;
+			if (canConnect) {
+				if (confirm("Connect with this mentee?")) {
+					WebService.ConnectWithMentee(uid, 2, _connectWithMenteeCallback);
+				}
+			}
+			else {
+				alert("You can not have more than 2 connections.");
 			}
 		}
 		else {
@@ -28,8 +40,6 @@
 	function _connectWithMenteeCallback(retval) {
 		btn.toggleClass("accept reject");
 		if (btn.hasClass('accept')) {
-			// btn.text('connect');
-			// TODO: remove this row
 			var li = btn.closest("li");
 			btn.closest("li").remove();
 			// check if there's any items left
