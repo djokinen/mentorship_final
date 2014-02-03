@@ -41,6 +41,9 @@
 						</td>
 					</tr>
 					<tr>
+						<td colspan="2"><em>Password must be at least 6 characters long</em></td>
+					</tr>
+					<tr>
 						<td colspan="2">
 							<asp:CheckBox ID="RememberMe" runat="server" Text="Remember me next time." />
 						</td>

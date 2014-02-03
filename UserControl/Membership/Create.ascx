@@ -134,7 +134,7 @@
 
 			<h2>Welcome!</h2>
 			<h3>Account Status</h3>
-			<p>Your account has been set-up. Please allow 24-48 hours for us to review your account information.</p>
+			<p>Thank you for registering, an e-mail will be sent to you within 48hrs with confirmation.</p>
 			<%--<ul><li><a class="btn accept" href="/membership/profile.aspx">View your profile</a></li></ul>--%>
 
 	</asp:Panel>

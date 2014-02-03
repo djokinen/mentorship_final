@@ -27,7 +27,6 @@ public partial class UserControl_MenteeMentor_List : BaseUserControl
 		StringBuilder text = new StringBuilder();
 		string[] userNames = Roles.GetUsersInRole(RoleType.Mentor.ToString());
 		MembershipUserCollection membershipUserCollection = new MembershipUserCollection();
-		// foreach (string userName in userNames)
 		int count = 0;
 
 		for (int i = 0; i < userNames.Count(); i++)
@@ -65,11 +64,12 @@ public partial class UserControl_MenteeMentor_List : BaseUserControl
 
 						mentorDetail.AppendFormat("<div class=\"subtitle\"><em>{0}</em></div>", profileCommon.Mentor.CompanyName);
 						mentorDetail.AppendFormat("<div><strong>{0}</strong></div>", String.Join(", ", industryList.Select(n => n.Name)));
-						mentorDetail.AppendFormat("<p>{0}</p>", profileCommon.Mentor.Bio);
+						mentorDetail.AppendFormat("<div id=\"mentor-bio\">{0}</div>", profileCommon.Mentor.Bio);
 
 						mentorDetail.Append("<Fieldset id=\"cxn-request-form\" style='display:none;'>");
 						mentorDetail.AppendFormat("<legend>{0}</legend>", "Request Connection");
-						mentorDetail.AppendFormat("<textarea rows='3' placeholder='Personal message to mentor'>{0}</textarea>", profileCommon.Mentor.Bio);
+						// mentorDetail.AppendFormat("<textarea rows='3' placeholder='Personal message to mentor'>{0}</textarea>", profileCommon.Mentor.Bio);
+						mentorDetail.Append("<textarea rows='3' placeholder='Personal message to mentor'></textarea>");
 						mentorDetail.Append("<a class=\"btn accept\" href=\"javascript://\" id=\"cxn-send-button\">Send</a>");
 						mentorDetail.Append("<a class=\"btn reject\" href=\"javascript://\" id=\"cxn-cancel-button\">Cancel</a>");
 						mentorDetail.Append("</fieldset>");

@@ -22,7 +22,7 @@
 			$("#mentor-detail #cnx-request-button").html("Connect with " + mentorAsJson['Name']);
 			$("#mentor-detail .subtitle em").html(mentorAsJson['Company']);
 			$("#mentor-detail div strong").html(mentorAsJson['Industries']);
-			$("#mentor-detail p").html(mentorAsJson['Bio']);
+			$("#mentor-detail #mentor-bio").html(mentorAsJson['Bio']);
 
 			_setConnectionStatusInDetailForm(mentorAsJson['ConnectionStatusId']);
 		});

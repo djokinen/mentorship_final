@@ -60,7 +60,7 @@
 
 		<asp:ScriptManager ID="scriptManager" runat="server">
 			<Services>
-				<asp:ServiceReference Path="~/membership/WebService.asmx" />
+				<asp:ServiceReference Path="~/WebService.asmx" />
 			</Services>
 		</asp:ScriptManager>
 

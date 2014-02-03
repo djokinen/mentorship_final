@@ -12,6 +12,12 @@ section#header {
 	text-transform: lowercase;
 }
 
+footer img#logo { margin-bottom: 16px; }
+
+#radioList input:not(:first-child) {
+	margin-left:3em;
+}
+
 .error {
 	color: #f00;
 }
@@ -32,6 +38,7 @@ span.status {
 }
 
 	.form fieldset legend {
+		font-size:18px;
 		font-weight: bolder;
 		background-color: white;
 		border-radius: .50em;
@@ -98,6 +105,19 @@ span.status {
 
 .form fieldset ol li span {
 	border: none;
+}
+
+#cxn-request-form {
+	margin-top: 1em;
+	margin-bottom:1em;
+}
+
+#cxn-request-form textarea {
+	margin-bottom: 1em;
+}
+
+#cnx-request-button {
+	margin-top:1em;
 }
 
 /* mentor industry list boxes */
@@ -222,12 +242,12 @@ h3 {
 
 #mentee-mentor-list li {
 	width: 100%;
-	padding:10px;
+	padding: 10px;
 }
 
 	#mentee-mentor-list li:hover {
 		background-color: #eee;
-		border:solid 1px #ddd;
+		border: solid 1px #ddd;
 	}
 
 

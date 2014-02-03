@@ -46,7 +46,7 @@ public static class Global
 			string url = string.Format("{0}{1}", _getBaseUrl(), Resources.Key.ProfileUrl);
 
 			ProfileCommon profileCommon = GetProfile(membershipUserMentee.UserName);
-			body.AppendFormat("<p>{0} wants you to be their mentor. See their personal message to you here:</p>", profileCommon.FullName);
+			body.AppendFormat("<p>{0} wants you to be his/her mentor. See his/her personal message to you here:</p>", profileCommon.FullName);
 			if (string.IsNullOrWhiteSpace(message)) { body.Append("<blockquote>No custom message sent</blockquote>"); }
 			else { body.AppendFormat("<blockquote>{0}</blockquote>", message); }
 
@@ -98,6 +98,8 @@ public static class Global
 			StringBuilder body = new StringBuilder();
 
 			body.AppendFormat("<p>Your connection has been accepted by {0}</p>", profileCommonMentor.FullName);
+			body.AppendFormat("<p>You can now communicate with your mentor using the following email address:</p>");
+			body.AppendFormat("<ul><li>{0}</li></ul>", membershipUserMentor.Email);
 			body.AppendFormat(_getEmailFooter(baseUrl));
 			mailMessage.Body = body.ToString();
 			try

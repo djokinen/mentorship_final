@@ -4,32 +4,22 @@
 	<div class="f_top center">
 		<div class="container_16">
 			<div class="grid_16">
-				<!--<h4 style="text-align: right">Follow Us</h4>-->
 				<div class="socials">
-					<a href="#"></a>
-					<a href="#"></a>
-					<a href="#"></a>
-					<a href="#"></a>
+					<a title="twitter" href="#"></a>
+					<a title="facebook" href="#"></a>
+					<a title="rss" href="#"></a>
+					<a title="google" href="#"></a>
 				</div>
-
-				<!--<div class="copy">
-            	
-                	<img src="/images-2/cree-logo.png" alt="CREE Logo">  				
-					<p></p>
-					<p style="alignment-baseline:baseline">CREE Youth Nation &copy; 2013 <a href="#">Privacy policy</a></p>
-               
-            </div>-->
 			</div>
 		</div>
 	</div>
 	<div class="copy">
 		<div class="container_16">
 			<div class="grid_16">
-				<img src="/images-2/cree-logo.png" alt="CREE Logo">
-				<p></p>
+				<img id="logo" src="/images-2/cree-logo.png" alt="CREE Logo">
 				<p><a href="/default.aspx">Home</a> | <a href="/mentoring.aspx">Mentoring</a> | <a href="/mentor.aspx">Mentor</a> | <a href="/mentee.aspx">Mentee</a> | <a href="/contact.aspx">Contact</a></p>
-				<p style="alignment-baseline: baseline">CREE Youth Mentor Program &copy; 2013 <a href="#">Privacy policy</a></p>
-				<!--{%FOOTER_LINK} -->
+				<p>Created by: <a href="http://www.spiritusmentoringgroup.com" target="_blank" title="www.spiritusmentoringgroup.com">www.spiritusmentoringgroup.com</a></p>
+				<p>CREE Youth Mentor Program &copy; 2013 <a href="#">Privacy policy</a></p>
 			</div>
 		</div>
 	</div>
