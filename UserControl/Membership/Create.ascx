@@ -26,27 +26,27 @@
 
 				<li>
 					<asp:Label ID="FullNameLabel" runat="server" AssociatedControlID="FullName">Name</asp:Label>
-					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="FullNameRequired" runat="server" ControlToValidate="FullName" ErrorMessage="Full Name is required." ToolTip="Full Name is required." ValidationGroup="required-info">*</asp:RequiredFieldValidator>
-					<asp:TextBox ID="FullName" runat="server" placeholder="Full Name"></asp:TextBox>
+					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="FullNameRequired" runat="server" ControlToValidate="FullName" ErrorMessage="Full Name is required." ToolTip="Full Name is required." ValidationGroup="required-info">* Required</asp:RequiredFieldValidator>
+					<asp:TextBox AutoCompleteType="DisplayName" ID="FullName" runat="server" placeholder="Full Name"></asp:TextBox>
 				</li>
 
 				<li>
 					<asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name (email address)</asp:Label>
-					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Email is required." ToolTip="Email is required." ValidationGroup="required-info">*</asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator Display="Dynamic" CssClass="error" ControlToValidate="UserName" ID="emailAddressValidator" runat="server" ValidationGroup="required-info">Invalid email address</asp:RegularExpressionValidator>
-					<asp:TextBox placeholder="Email Address" ID="UserName" runat="server" AutoCompleteType="Email"></asp:TextBox>
+					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Email is required." ToolTip="Email is required." ValidationGroup="required-info">* Required</asp:RequiredFieldValidator>
+					<asp:RegularExpressionValidator Display="Dynamic" CssClass="error" ControlToValidate="UserName" ID="emailAddressValidator" runat="server" ValidationGroup="required-info">invalid email</asp:RegularExpressionValidator>
+					<asp:TextBox type="email" AutoCompleteType="Email" placeholder="Email Address" ID="UserName" runat="server"></asp:TextBox>
 				</li>
 
 				<li>
 					<asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password</asp:Label>
-					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="required-info">*</asp:RequiredFieldValidator>
+					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="required-info">* Required</asp:RequiredFieldValidator>
 					<asp:TextBox placeholder="Password" ID="Password" runat="server" TextMode="Password"></asp:TextBox>
 				</li>
 
 				<li>
 					<asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Confirm Password</asp:Label>
-					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." ValidationGroup="required-info">*</asp:RequiredFieldValidator>
-					<asp:CompareValidator Display="Dynamic" CssClass="error" ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" ErrorMessage="The Password and Confirmation Password must match." ValidationGroup="required-info"></asp:CompareValidator>
+					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." ValidationGroup="required-info">* Required</asp:RequiredFieldValidator>
+					<asp:CompareValidator Display="Dynamic" CssClass="error" ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" ErrorMessage="Passwords must match" ValidationGroup="required-info">Passwords must match</asp:CompareValidator>
 					<asp:TextBox placeholder="Confirm Password" ID="ConfirmPassword" runat="server" TextMode="Password"></asp:TextBox>
 				</li>
 
@@ -67,7 +67,7 @@
 			<ol>
 				<li>
 					<asp:Label ID="MenteePhoneLabel" runat="server" AssociatedControlID="MenteePhone">Phone</asp:Label>
-					<asp:TextBox ID="MenteePhone" runat="server" placeholder="Phone Number"></asp:TextBox>
+					<asp:TextBox AutoCompleteType="HomePhone" type="tel" ID="MenteePhone" runat="server" placeholder="Phone Number"></asp:TextBox>
 				</li>
 
 				<li>
@@ -77,13 +77,13 @@
 
 				<li>
 					<asp:Label ID="MenteeDobLabel" runat="server" AssociatedControlID="MenteeDob">D.O.B.</asp:Label>
-					<asp:TextBox ID="MenteeDob" runat="server" placeholder="Date of Birth"></asp:TextBox>
+					<asp:TextBox type="date" ID="MenteeDob" runat="server" placeholder="Date of Birth"></asp:TextBox>
 					<%--<ajaxToolkit:CalendarExtender ID="calendarExtender" runat="server" TargetControlID="MenteeDob" Format="MMM dd, yyyy"></ajaxToolkit:CalendarExtender>--%>
 				</li>
 
 				<li>
 					<asp:Label ID="MenteeOccupationLabel" runat="server" AssociatedControlID="MenteeOccupation">Occupation</asp:Label>
-					<asp:TextBox ID="MenteeOccupation" runat="server" placeholder="Occupation"></asp:TextBox>
+					<asp:TextBox AutoCompleteType="JobTitle" ID="MenteeOccupation" runat="server" placeholder="Occupation"></asp:TextBox>
 				</li>
 				<li>
 					<div class="commands">
@@ -102,12 +102,12 @@
 			<ol>
 				<li>
 					<asp:Label ID="MentorPhoneLabel" runat="server" AssociatedControlID="MentorPhone">Phone</asp:Label>
-					<asp:TextBox ID="MentorPhone" runat="server" placeholder="Phone Number"></asp:TextBox>
+					<asp:TextBox AutoCompleteType="HomePhone" type="tel" ID="MentorPhone" runat="server" placeholder="Phone Number"></asp:TextBox>
 				</li>
 
 				<li>
 					<asp:Label ID="MentorCompanyNameLabel" runat="server" AssociatedControlID="MentorCompanyName">Company Name</asp:Label>
-					<asp:TextBox ID="MentorCompanyName" runat="server" placeholder="Company Name"></asp:TextBox>
+					<asp:TextBox AutoCompleteType="Company" ID="MentorCompanyName" runat="server" placeholder="Company Name"></asp:TextBox>
 				</li>
 
 <%--				<li>
@@ -117,7 +117,7 @@
 
 				<li>
 					<asp:Label ID="MentorBioLabel" runat="server" AssociatedControlID="MentorBio">Bio</asp:Label>
-					<asp:TextBox TextMode="MultiLine" Rows="3" ID="MentorBio" runat="server" placeholder="Bio"></asp:TextBox>
+					<asp:TextBox AutoCompleteType="Notes" TextMode="MultiLine" Rows="3" ID="MentorBio" runat="server" placeholder="Bio"></asp:TextBox>
 				</li>
 
 				<li>

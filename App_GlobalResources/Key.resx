@@ -129,6 +129,10 @@
   <data name="EmailAccountNoReply" xml:space="preserve">
     <value>noreply@creeyouthmentorprogram.com</value>
   </data>
+  <data name="EmailSubjectPrefix" xml:space="preserve">
+    <value>Cree Youth Mentorship: {0}</value>
+    <comment>0=email type</comment>
+  </data>
   <data name="IsEditMode" xml:space="preserve">
     <value>iem</value>
   </data>

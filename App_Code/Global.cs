@@ -42,7 +42,7 @@ public static class Global
 			mailMessage.To.Add(membershipUserMentor.Email);
 
 			mailMessage.IsBodyHtml = true;
-			mailMessage.Subject = "Cree Youth Mentorship: Connection Request";
+			mailMessage.Subject = string.Format(Resources.Key.EmailSubjectPrefix, "Connection Request");
 
 			StringBuilder body = new StringBuilder();
 			string url = string.Format("{0}{1}", _getBaseUrl(), Resources.Key.ProfileUrl);
@@ -95,7 +95,7 @@ public static class Global
 			mailMessage.To.Add(membershipUserMentee.Email);
 
 			mailMessage.IsBodyHtml = true;
-			mailMessage.Subject = "Cree Youth Mentorship: Connection Accepted";
+			mailMessage.Subject = string.Format(Resources.Key.EmailSubjectPrefix, "Connection Accepted");
 
 			StringBuilder body = new StringBuilder();
 
@@ -138,7 +138,7 @@ public static class Global
 			mailMessage.Bcc.Add(Resources.Key.EmailAccountAdmin);
 
 			// subject
-			mailMessage.Subject = "Cree Youth Mentorship: Registration Confirmation";
+			mailMessage.Subject = string.Format(Resources.Key.EmailSubjectPrefix, "Registration Confirmation");
 
 			mailMessage.IsBodyHtml = true;
 			StringBuilder body = new StringBuilder();
@@ -180,7 +180,7 @@ public static class Global
 			mailMessage.Bcc.Add(Resources.Key.EmailAccountAdmin);
 
 			// subject
-			mailMessage.Subject = "Cree Youth Mentorship: Registration Approved";
+			mailMessage.Subject = string.Format(Resources.Key.EmailSubjectPrefix, "Registration Approved");
 
 			mailMessage.IsBodyHtml = true;
 			string url = string.Format("{0}{1}", _getBaseUrl(), Resources.Key.ProfileUrl);
@@ -197,6 +197,48 @@ public static class Global
 			}
 			catch (SmtpFailedRecipientException) { value = false; }
 		}
+		return value;
+	}
+
+	public static bool SendContactEmail(string name, string email, string message)
+	{
+		/*
+		 * from: email
+		 * cc: email
+		 * bcc: admin
+		 */
+
+		bool value = false;
+		string baseUrl = Global._getBaseUrl();
+
+		// mail message
+		MailMessage mailMessage = new MailMessage();
+
+		// from
+		mailMessage.From = new MailAddress(Resources.Key.EmailAccountNoReply);
+
+		// to
+		mailMessage.CC.Add(email);
+
+		// bcc
+		mailMessage.Bcc.Add(Resources.Key.EmailAccountAdmin);
+
+		// subject
+		mailMessage.Subject = string.Format(Resources.Key.EmailSubjectPrefix, "Contact Us");
+
+		mailMessage.IsBodyHtml = true;
+		StringBuilder body = new StringBuilder();
+		body.AppendFormat("<p>Thank you for contacting us!</p>");
+		body.Append("<p>Your contact inquiry is being reviewed and you should receive a follow-up email within 48hrs.</p>");
+		body.AppendFormat("<fieldset><legend>Message</legend>{0}</fieldset>", message);
+		body.AppendFormat(_getEmailFooter(baseUrl));
+		mailMessage.Body = body.ToString();
+		try
+		{
+			new SmtpClient().Send(mailMessage);
+			value = true;
+		}
+		catch (SmtpFailedRecipientException) { value = false; }
 		return value;
 	}
 
