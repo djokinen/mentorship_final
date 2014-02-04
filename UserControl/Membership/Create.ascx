@@ -33,7 +33,7 @@
 				<li>
 					<asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name (email address)</asp:Label>
 					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Email is required." ToolTip="Email is required." ValidationGroup="required-info">*</asp:RequiredFieldValidator>
-					<asp:RegularExpressionValidator Display="Dynamic" CssClass="error" ControlToValidate="UserName" ID="emailAddressValidator" runat="server" ValidationGroup="required-info" ValidationExpression="^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$">Invalid email address</asp:RegularExpressionValidator>
+					<asp:RegularExpressionValidator Display="Dynamic" CssClass="error" ControlToValidate="UserName" ID="emailAddressValidator" runat="server" ValidationGroup="required-info">Invalid email address</asp:RegularExpressionValidator>
 					<asp:TextBox placeholder="Email Address" ID="UserName" runat="server" AutoCompleteType="Email"></asp:TextBox>
 				</li>
 

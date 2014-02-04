@@ -11,6 +11,8 @@ using System.Web.Security;
 /// </summary>
 public static class Global
 {
+	public static readonly string EmailRegEx = @"^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$";
+
 	/// <summary>Initial email sent to a mentor to request a connection with them</summary>
 	/// <param name="membershipUserMentor"></param>
 	/// <param name="message"></param>

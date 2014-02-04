@@ -18,6 +18,12 @@ public partial class UserControl_Membership_Create : BaseUserControl
 		buttonUpdateProfile_mentor.Click += buttonUpdateProfile_Click;
 	}
 
+	protected override void OnLoad(EventArgs e)
+	{
+		base.OnLoad(e);
+		emailAddressValidator.ValidationExpression = Global.EmailRegEx;
+	}
+
 	void buttonCreateUser_Click(object sender, EventArgs e) { _showStep(((LinkButton)sender).CommandArgument); }
 
 	void buttonUpdateProfile_Click(object sender, EventArgs e) { _showStep(((LinkButton)sender).CommandArgument); }

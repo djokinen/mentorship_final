@@ -33,29 +33,22 @@
 				<label for="textName" class="name">
 					<asp:TextBox placeholder="Name:" ID="textName" runat="server"></asp:TextBox>
 					<br class="clear">
-					<asp:RequiredFieldValidator CssClass="error error-empty" ControlToValidate="textName" Display="Dynamic" ErrorMessage="required" ID="required_name" runat="server" Text="required" ToolTip="required"></asp:RequiredFieldValidator>
+					<asp:RequiredFieldValidator CssClass="error error-empty" ControlToValidate="textName" Display="Dynamic" ErrorMessage="* Required" ID="required_name" runat="server" Text="* Required" ToolTip="* Required"></asp:RequiredFieldValidator>
 				</label>
 
-				<label class="name">
-					<input type="text" value="Name:">
+				<label for="textEmail" class="name">
+					<asp:TextBox placeholder="Email:" ID="textEmail" runat="server" TextMode="Email"></asp:TextBox>
 					<br class="clear">
-					<span class="error error-empty">*This is not a valid name.</span><span class="empty error-empty">* This field is required.</span>
+					<asp:RequiredFieldValidator CssClass="error error-empty" ControlToValidate="textEmail" Display="Dynamic" ErrorMessage="* Required" ID="required_email" runat="server" Text="* Required" ToolTip="* Required"></asp:RequiredFieldValidator>
+					<asp:RegularExpressionValidator Display="Dynamic" CssClass="error error-empty" ControlToValidate="textEmail" ID="emailAddressValidator" runat="server">Invalid email address</asp:RegularExpressionValidator>
 				</label>
-				<label class="email">
-					<input type="text" value="E-mail:">
+
+				<label for="textMessage" class="message">
+					<asp:TextBox placeholder="Message:" ID="textMessage" runat="server" TextMode="MultiLine"></asp:TextBox>
 					<br class="clear">
-					<span class="error error-empty">*This is not a valid email address.</span><span class="empty error-empty">* This field is required.</span>
+					<asp:RequiredFieldValidator CssClass="error error-empty" ControlToValidate="textMessage" Display="Dynamic" ErrorMessage="* Required" ID="required_message" runat="server" Text="* Required" ToolTip="* Required"></asp:RequiredFieldValidator>
 				</label>
-				<label class="phone">
-					<input type="tel" value="Phone:">
-					<br class="clear">
-					<span class="error error-empty">*This is not a valid phone number.</span><span class="empty error-empty">* This field is required.</span>
-				</label>
-				<label class="message">
-					<textarea>Message:</textarea>
-					<br class="clear">
-					<span class="error">*The message is too short.</span> <span class="empty">* This field is required.</span>
-				</label>
+
 				<div class="clear"></div>
 				<div class="btns">					
 					<a data-type="submit" class="btn accept">submit</a>
