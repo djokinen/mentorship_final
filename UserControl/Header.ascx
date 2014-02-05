@@ -39,18 +39,6 @@
 							</ul>
 						</li>
 						
-						<asp:LoginView ID="loginViewAdmin" runat="server">
-							<RoleGroups>
-								<asp:RoleGroup Roles="admin">
-									<ContentTemplate>
-										<li>
-											<a href="/membership/admin/default.aspx" title="admin">Admin</a>
-										</li>
-									</ContentTemplate>
-								</asp:RoleGroup>
-							</RoleGroups>
-						</asp:LoginView>
-
 						<li>
 							<asp:LoginView ID="loginView" runat="server">
 								<AnonymousTemplate>
@@ -63,6 +51,19 @@
 						</li>
 
 						<li><a href="/contact.aspx">Contact</a></li>
+						
+						<asp:LoginView ID="loginViewAdmin" runat="server">
+							<RoleGroups>
+								<asp:RoleGroup Roles="admin">
+									<ContentTemplate>
+										<li>
+											<a href="/membership/admin/default.aspx" title="admin">Admin</a>
+										</li>
+									</ContentTemplate>
+								</asp:RoleGroup>
+							</RoleGroups>
+						</asp:LoginView>
+
 						<li><asp:LoginStatus ID="loginStatus" runat="server" /></li>
 					</ul>
 				</nav>
