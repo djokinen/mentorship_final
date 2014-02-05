@@ -230,7 +230,7 @@ public static class Global
 		StringBuilder body = new StringBuilder();
 		body.AppendFormat("<p>Thank you for contacting us!</p>");
 		body.Append("<p>Your contact inquiry is being reviewed and you should receive a follow-up email within 48hrs.</p>");
-		body.AppendFormat("<fieldset><legend>Message</legend>{0}</fieldset>", message);
+		body.AppendFormat("<blockquote><fieldset><legend>Message</legend>{0}</fieldset></blockquote>", message);
 		body.AppendFormat(_getEmailFooter(baseUrl));
 		mailMessage.Body = body.ToString();
 		try
@@ -255,6 +255,6 @@ public static class Global
 
 	private static string _getEmailFooter(string baseUrl)
 	{
-		return string.Format("<p>If you have any questions, please contact us at <a href=\"mailto://{0}\">{0}</a>.</p>", Resources.Key.EmailAccountAdmin);
+		return string.Format("<br /><hr /><p><em>If you have any questions, please contact us at <a href=\"mailto://{0}\">{0}</a>.</em></p>", Resources.Key.EmailAccountAdmin);
 	}
 }

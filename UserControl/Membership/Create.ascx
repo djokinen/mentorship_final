@@ -31,14 +31,14 @@
 				</li>
 
 				<li>
-					<asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name (email address)</asp:Label>
+					<asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name (<em>email address</em>)</asp:Label>
 					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Email is required." ToolTip="Email is required." ValidationGroup="required-info">* Required</asp:RequiredFieldValidator>
 					<asp:RegularExpressionValidator Display="Dynamic" CssClass="error" ControlToValidate="UserName" ID="emailAddressValidator" runat="server" ValidationGroup="required-info">invalid email</asp:RegularExpressionValidator>
 					<asp:TextBox type="email" AutoCompleteType="Email" placeholder="Email Address" ID="UserName" runat="server"></asp:TextBox>
 				</li>
 
 				<li>
-					<asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password</asp:Label>
+					<asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password (<em>must be at least 6 characters long</em>)</asp:Label>
 					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="required-info">* Required</asp:RequiredFieldValidator>
 					<asp:TextBox placeholder="Password" ID="Password" runat="server" TextMode="Password"></asp:TextBox>
 				</li>
