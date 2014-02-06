@@ -26,8 +26,8 @@
 
 				<li>
 					<asp:Label ID="FullNameLabel" runat="server" AssociatedControlID="FullName">Name</asp:Label>
-					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="FullNameRequired" runat="server" ControlToValidate="FullName" ErrorMessage="Full Name is required." ToolTip="Full Name is required." ValidationGroup="required-info">* Required</asp:RequiredFieldValidator>
-					<asp:TextBox AutoCompleteType="DisplayName" ID="FullName" runat="server" placeholder="Full Name"></asp:TextBox>
+					<asp:RequiredFieldValidator Display="Dynamic" CssClass="error" ID="FullNameRequired" runat="server" ControlToValidate="FullName" ErrorMessage="First and last name are required." ToolTip="First and last name are required." ValidationGroup="required-info">* Required</asp:RequiredFieldValidator>
+					<asp:TextBox AutoCompleteType="DisplayName" ID="FullName" runat="server" placeholder="First and Last Name"></asp:TextBox>
 				</li>
 
 				<li>
